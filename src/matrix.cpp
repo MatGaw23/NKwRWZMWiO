@@ -1,16 +1,31 @@
 #include "matrix.hpp"
 
-// void HelloWorld::say() {
-//  std::cout << "Hello, World"; 
-// }
-template <class T>
-Matrix2Dim<T> :: Matrix2Dim (T init_value, int _dim_x, int _dim_y)
-{
-    dim_x = _dim_x;
-    dim_y = _dim_y;
+#include <assert.h>
 
-    for (int i = 0; i < dim_x; i++)
-        matrix.push_back(std::vector<T>(dim_y, init_value));
+template <class T>
+Matrix2Dim<T> :: Matrix2Dim (T init_value, int _dim_row, int _dim_column)
+{
+    dim_row = _dim_row;
+    dim_column = _dim_column;
+
+    for (int i = 0; i < dim_row; i++)
+        matrix.push_back(std::vector<T>(dim_column, init_value));
+}
+
+template <class T>
+void Matrix2Dim<T> :: set_cell(T value, int row, int column)
+{
+    assert( row >= 0 && row < dim_row && column >= 0 && column < dim_column);
+    
+    matrix[row][column] = value;
+}
+
+template <class T>
+T Matrix2Dim<T> :: get_cell(int row, int column)
+{
+    assert( row >= 0 && row < dim_row && column >= 0 && column < dim_column);
+
+    return matrix[row][column];
 }
 
 template <class T>
