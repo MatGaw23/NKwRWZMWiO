@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 template <class T>
 class Matrix2Dim
@@ -16,6 +17,7 @@ public:
     void set_cell(T value, int row, int column);
     T get_cell(int row, int column);
     void print(void);
+    bool load_from_file(std::string filename);
 };
 
 #endif /* _MATRIX_H */
