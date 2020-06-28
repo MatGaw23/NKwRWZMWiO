@@ -68,6 +68,6 @@ bool Matrix2Dim<T> :: load_from_file(std::string filename)
     return true;
 }
 
-template class Matrix2Dim<float>;
+// template class Matrix2Dim<float>;
 template class Matrix2Dim<int>;
-template class Matrix2Dim<double>;
+// template class Matrix2Dim<double>;
