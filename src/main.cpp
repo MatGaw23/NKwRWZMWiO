@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    Matrix2Dim<int> m(0, 5, 5);
+    Matrix2Dim<int> m(0, 6, 6);
     
 //    m.set_cell(6, 1, 2);
 //    m.print();
@@ -13,8 +13,10 @@ int main(void)
     m.load_from_file("test_matrix.txt");
     m.print();
     
-    DFS d;
-    d.dfs_start(m, 0, 2);
+    // DFS d;
+    // d.dfs_start(m, 0, 2);
+
+
     
 
 	return 0;
