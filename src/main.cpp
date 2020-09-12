@@ -12,6 +12,9 @@ int main(void)
     std::cout<<"Macierz wejsciowa:\n\n";
     m.load_from_file("test_matrix.txt");
     m.print();
+
+    Algorithm lol;
+    lol.algorithm_start(m, 1);
     
     // DFS d;
     // d.dfs_start(m, 0, 2);

@@ -21,12 +21,13 @@ private:
 public:
     int num_of_vertexes = 0;
 
-    bool somsiad_function(Matrix2Dim<int> *obj_matrix, int current_row, struct cell_data **table, bool skip_value_above);
+    bool somsiad_function(Matrix2Dim<int> *obj_matrix, int current_row, int current_col, struct cell_data **table, bool skip_value_above);
     void update_costs_in_current_row(int current_row, struct cell_data **table);
-    bool history_is_the_same_chamber(int current_row, struct cell_data **table);
+    bool check_history(int row_to_check, int column_to_check, int vertex_to_check, struct cell_data **table);
     int get_max_num_of_chambers(int starting_vertex, int max_time);
     bool algorithm_start(Matrix2Dim<int> initial_matrix, int starting_vertex);
     void algorithm_cleanup(void);
+    int print_cygan_table(Matrix2Dim<int> *obj_matrix, struct cell_data **table);
 };
 
 
