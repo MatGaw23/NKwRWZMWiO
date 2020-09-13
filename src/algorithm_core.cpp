@@ -133,26 +133,45 @@ bool Algorithm :: algorithm_start(Matrix2Dim<int> initial_matrix, int starting_v
 
 bool Algorithm :: num_of_chambers_within_given_time(int num_of_vertexes, struct cell_data **table, int starting_vertex, int max_time_given, int *cost, int *num_of_chambers, std::vector<int> *path)
 {
+    *cost = 999;
+    bool found = false;
     starting_vertex--;
     for(auto checked_row = (num_of_vertexes-1) ; checked_row > 0; checked_row--)
     {
-        if ((table[checked_row][starting_vertex].distance <= max_time_given) && (table[checked_row][starting_vertex].distance > 0))
+        for (auto iteration_over_columns = 0; iteration_over_columns < num_of_vertexes; iteration_over_columns++)
         {
-            *cost = table[checked_row][starting_vertex].distance;
-            *num_of_chambers = checked_row+1;
-            *path = table[checked_row][starting_vertex].history;
-            std::cout<<std::endl<<"Wyniki -> koszt: "<<*cost<<", Ilosc komor kosmitow: "<<*num_of_chambers<<", Sciezka: ";
-            std::cout<<++starting_vertex<<",";
-            for (auto& a: *path)
+            if ((iteration_over_columns == starting_vertex) || (table[checked_row][iteration_over_columns].history.back() == starting_vertex))
             {
-                std::cout<<a + 1<<",";
+                if ((table[checked_row][iteration_over_columns].distance <= max_time_given) && (table[checked_row][iteration_over_columns].distance > 0))
+                {
+                    if (table[checked_row][iteration_over_columns].history.size()+1 <= path->size())
+                        continue;
+
+                    if (table[checked_row][iteration_over_columns].distance >= *cost)
+                        continue;
+
+                    *cost = table[checked_row][iteration_over_columns].distance;
+                    *num_of_chambers = checked_row+1;
+                    *path = table[checked_row][iteration_over_columns].history;
+                    path->insert(path->begin(), 1, iteration_over_columns);
+                    std::cout<<std::endl<<"Wyniki -> koszt: "<<*cost<<", Ilosc komor kosmitow: "<<*num_of_chambers<<", Sciezka: ";
+                    //std::cout<<++starting_vertex<<",";
+                    for (auto& a: *path)
+                    {
+                        std::cout<<a + 1<<",";
+                    }
+                    std::cout<<std::endl<<std::endl;
+                    found = true;
+                    // return true;
+                }
             }
-            std::cout<<std::endl<<std::endl;
-            return true;
         }
     }
     //sprawdzac od dolu czy jakis jeden z nich ma czas mniejszy od max_time given
-    //-> po prostu sprawdzac tylko kolumne z wierzcholkiem z ktorego zaczynamy --
+    //-> po prostu sprawdzac tylko kolumne z wierzcholkiem z ktorego zaczynamy -- update: sprawdzamy tez inne kolumny. 
+        //Jezeli w ich historii na poczatku albo koncu jest startting_vertex to tez go uwzgledniamy
+    if (found)
+        return true;
 
     std::cout<<std::endl<<"W takim czasie nawet nie dojdziesz do drugiej komory!"<<std::endl<<std::endl;
     return false;
