@@ -129,8 +129,6 @@ bool Algorithm :: algorithm_start(Matrix2Dim<int> initial_matrix, int starting_v
         delete[] table[i];
 
     delete[] table;
-
-    return true;
 }
 
 bool Algorithm :: num_of_chambers_within_given_time(int num_of_vertexes, struct cell_data **table, int starting_vertex, int max_time_given, int *cost, int *num_of_chambers, std::vector<int> *path)
@@ -179,7 +177,7 @@ bool Algorithm :: num_of_chambers_within_given_time(int num_of_vertexes, struct 
     return false;
 }
 
-void Algorithm :: print_cygan_table(Matrix2Dim<int> *obj_matrix, struct cell_data **table)
+int Algorithm :: print_cygan_table(Matrix2Dim<int> *obj_matrix, struct cell_data **table)
 {
     int table_dimension = obj_matrix->dim_column;
 

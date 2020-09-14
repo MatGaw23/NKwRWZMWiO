@@ -1,0 +1,15 @@
+Przykładowa macierz sąsiedztwa znajduje się w pliku:
+Pliki źródłowe/<system>/Test_matrix.txt
+
+Plik wykonywalny znajduje się w folderze:
+Pliki źródłowe/<system>/bin/main (wersja dla systemów unixowych)
+
+Ustawienia dla VisualStudioCode są zapisane w folderze:
+Pliki źródłowe/<system>/.vscode
+
+>Po włączeniu terminala w /Pliki_zrodlowe/Linux_Unix/bin(dla unixowych) lub /Pliki_zrodlowe/Windows/bin(dla windowsa),  wywołać polecenie ./main
+>Podajemy rozmiar macierzy wejściowej, dla przykładowej macierzy jest to: 6. Zatwierdzamy enterem.
+>Podajemy nazwe pliku z macierza z rozszerzeniem. Np. test_matrix.txt, zatwierdzamy enterem. Macierz powinna znajdować się w katalogu razem z plikiem wykonywalnym.
+>Podajemy komorę z której zaczynamy (wejście do bazy obcych), zatwierdzamy enter'em
+>Podajemy czas jaki został ochotnikowi na przejscie komór, zatwierdzamy enter'em
+Dostajemy wynik w postaci kosztu który odpowiada czasowi przejscia przez X komór, Ilość 'X' komór które udało się pokonać, oraz pokonaną ścieżkę.
